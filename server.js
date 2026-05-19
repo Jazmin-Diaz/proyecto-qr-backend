@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
+const historialRoutes = require("./routes/historialRoutes");
 const usuarioRoutes = require("./routes/usuarioRoutes");
 
 const app = express();
@@ -15,11 +16,13 @@ app.get("/", (req, res) => {
   res.json({
     mensaje: "API funcionando",
     endpoints: {
+      historial: "/api/historial",
       usuarios: "/api/usuarios",
     },
   });
 });
 
+app.use("/api/historial", historialRoutes);
 app.use("/api/usuarios", usuarioRoutes);
 
 connectDB()

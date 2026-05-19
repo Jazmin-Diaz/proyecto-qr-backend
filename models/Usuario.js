@@ -19,6 +19,16 @@ const usuarioSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
+    sessionTokenHash: {
+      type: String,
+      default: null,
+      select: false,
+    },
+    sessionTokenCreatedAt: {
+      type: Date,
+      default: null,
+      select: false,
+    },
   },
   {
     timestamps: true,
